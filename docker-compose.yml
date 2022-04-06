@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  db:
+    container_name: 'db-container'
+    image: mysql:8.0.28
+    restart: aways
+    env_file: ./.env
+    ports:
+      - '3306:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - backend
+
+volumes:
+  db:
+
+networks:
+  backend:
