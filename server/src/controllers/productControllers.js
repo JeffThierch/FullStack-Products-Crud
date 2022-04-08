@@ -6,6 +6,8 @@ const getAll = async (_req, res, next) => {
 
     return res.status(200).json(allProducts);
   } catch (error) {
+    console.error(error.message)
+
     return next(error.message);
   }
 };
@@ -19,7 +21,8 @@ const create = async (req, res, next) => {
     return res.status(201).json(createdProduct);
 
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message)
+
     return next(error.message);
   }
 };
@@ -27,6 +30,7 @@ const create = async (req, res, next) => {
 const update = async (req, res, next) => {
   try {
     const { id } = req.params;
+
     const { name, code, is_active, category_id } = req.body;
 
     const updatedProduct = await productsServices.update(
@@ -36,6 +40,8 @@ const update = async (req, res, next) => {
     return res.status(201).json(updatedProduct);
 
   } catch (error) {
+    console.error(error.message)
+
     return next(error.message);
   }
 }
@@ -49,6 +55,8 @@ const deleteProduct = async (req, res, next) => {
     return res.status(200).json({message: `Product with id: ${id} deleted successfully`});
 
   } catch (error) {
+    console.error(error.message)
+
     return next(error.message);
   }
 }

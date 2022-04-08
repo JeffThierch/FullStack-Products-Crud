@@ -34,7 +34,30 @@ const create = async ({name, code, is_active, category_id}) => {
   return newProduct
 }
 
+const update = async ({ id, name, code, is_active, category_id }) => {
+  const intID = parseInt(id)
+
+  const productExist = await prismaClient.product.findUnique({where: {id: intID}})
+
+  if(!productExist) {
+    throw new Error('PRODUCT_NOT_EXIST');
+  }
+
+  await prismaClient.product.update({
+    where: {id: intID},
+    data: {
+      name,
+      code,
+      is_active,
+      category_id
+    }
+  })
+
+  return { id: intID, name, code, is_active, category_id }
+}
+
 module.exports = {
   getAll,
-  create
+  create,
+  update
 }
