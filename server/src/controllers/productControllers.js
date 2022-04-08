@@ -31,7 +31,7 @@ const update = async (req, res, next) => {
     );
 
     return res.status(201).json(updatedProduct);
-    
+
   } catch (error) {
     return next(error.message);
   }
@@ -48,4 +48,11 @@ const deleteProduct = async (req, res, next) => {
   } catch (error) {
     return next(error.message);
   }
+}
+
+module.exports = {
+  getAll,
+  create,
+  update,
+  deleteProduct,
 }
