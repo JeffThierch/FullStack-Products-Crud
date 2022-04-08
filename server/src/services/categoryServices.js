@@ -7,8 +7,16 @@ const getAll = async () => {
   return allCategories;
 };
 
-const create = async () => {
+const create = async ({name}) => {
+  categoryValidations.validateCreateCategorie({name});
 
+  const newCategory = await prismaClient.category.create({
+    data: {
+      name
+    }
+  });
+
+  return  newCategory;
 };
 
 module.exports = {
