@@ -1,3 +1,5 @@
+const productsServices = require('../services/productServices');
+
 const getAll = async (_req, res, next) => {
   try {
     const allProducts = await productsServices.getAll();
