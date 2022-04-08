@@ -25,7 +25,7 @@ services:
     build: ./server
     restart: always
     ports:
-      - $NODE_LOCAL_PORT:$NODE_CONTAINER_PORT
+      - $PORT:$PORT
     env_file:
       - ./.env
     volumes:
