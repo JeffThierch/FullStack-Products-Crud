@@ -8,4 +8,10 @@ app.get('/', (req, res) => {
   res.send('Estou vivo')
 })
 
+const productRoutes = require('../routes/productRoutes')
+app.use('/products', productRoutes)
+
+const categoriesRoutes = require('../routes/categoryRoutes')
+app.use('/categories', categoriesRoutes)
+
 module.exports = app;
