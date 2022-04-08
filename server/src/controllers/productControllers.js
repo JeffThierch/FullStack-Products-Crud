@@ -19,6 +19,7 @@ const create = async (req, res, next) => {
     return res.status(201).json(createdProduct);
 
   } catch (error) {
+    console.log(error.message);
     return next(error.message);
   }
 };
