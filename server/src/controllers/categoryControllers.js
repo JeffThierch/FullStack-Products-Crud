@@ -1,8 +1,10 @@
 const categoryServices = require('../services/categoryServices');
 
-const getAll = async (_req, res, next) => {
+const getAll = async (req, res, next) => {
   try {
-    const allCategories = await categoryServices.getAll();
+    const { includeProducts } = req.query
+
+    const allCategories = await categoryServices.getAll({includeProducts});
 
     return res.status(200).json(allCategories);
 
