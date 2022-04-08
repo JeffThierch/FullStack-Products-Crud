@@ -23,7 +23,7 @@ const getAll = async ({includeProducts}) => {
 const create = async ({name}) => {
   categoryValidations.validateCreateCategorie({name});
 
-  const categoryNameExist = await prismaClient.category.findMany(
+  const categoryNameExist = await prismaClient.category.findUnique(
     {where: {name}}
   )
 
