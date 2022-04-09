@@ -1,4 +1,4 @@
-import {} from '../actions';
+import { REQUEST_PRODUCTS } from '../actions';
 
 const INTIAL_STATE = {
   products: [],
@@ -8,6 +8,12 @@ const INTIAL_STATE = {
 
 const dataReducer = (state = INTIAL_STATE, { type, payload } = {}) => {
   switch (type) {
+    case REQUEST_PRODUCTS:
+      return {
+        ...state,
+        products: payload.data,
+        error: payload.error,
+      };
     default:
       return state;
   }
