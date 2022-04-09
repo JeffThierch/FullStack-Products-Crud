@@ -24,7 +24,7 @@ export default function Table() {
       </thead>
       <tbody>
         {productsData.map((product) => (
-          <tr>
+          <tr key={(product.name + product.code)}>
             <td>{product.name}</td>
             <td>{product.code}</td>
             <td>{product.category.name}</td>
