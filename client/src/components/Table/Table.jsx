@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
-import { productsTableHead } from '../../helpers/data';
+import productsTableHead from '../../helpers/data';
 import { requestProductsFromApi } from '../../redux/actions';
 
 export default function Table() {
@@ -27,7 +27,7 @@ export default function Table() {
           <tr>
             <td>{product.name}</td>
             <td>{product.code}</td>
-            <td>{product.category_id}</td>
+            <td>{product.category.name}</td>
             <td>{`${product.is_active}`}</td>
             <td>
               <button

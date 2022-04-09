@@ -8,7 +8,7 @@ const getProducts = async () => {
 
   try {
     const PORT = process.env.REACT_APP_SERVER_PORT;
-    const products = await axios.get(`http://localhost:${PORT}/products`);
+    const products = await axios.get(`http://localhost:${PORT}/products?includeCatagory=true`);
 
     return {
       ...RETURNED_OBJ,

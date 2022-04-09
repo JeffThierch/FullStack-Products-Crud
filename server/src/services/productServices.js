@@ -1,10 +1,18 @@
 const productValidations = require('./validations/productValidations');
 const { prismaClient } = require('../models/prismaClient');
 
-const getAll = async () => {
-  const allProducts = await prismaClient.product.findMany();
+const getAll = async (includeCatagory) => {
+  if (!includeCatagory) {
+    const allProducts = await prismaClient.product.findMany();
+  
+    return allProducts;
+  }
 
-  return allProducts;
+  const allProductsWithCategory = await prismaClient.product.findMany({
+    include: {category: {select: {name: true}}}
+  })
+
+  return allProductsWithCategory;
 }
 
 const create = async ({name, code, is_active, category_id}) => {
