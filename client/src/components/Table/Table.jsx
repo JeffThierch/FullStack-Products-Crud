@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import productsTableHead from '../../helpers/data';
-import { requestProductsFromApi } from '../../redux/actions';
+import { editProduct, requestDeleteProduct, requestProductsFromApi } from '../../redux/actions';
+import AplicationContext from '../../context/AplicationContext';
 
 export default function Table() {
   const dispatch = useDispatch();
@@ -12,6 +13,20 @@ export default function Table() {
   }, [dispatch]);
 
   const productsData = useSelector((state) => state.dataReducer.products);
+
+  const { toggleEditMode, isEditMode } = useContext(AplicationContext);
+
+  const editProductInfos = (productId) => {
+    const productToEdit = productsData.find((product) => product.id === productId);
+
+    dispatch(editProduct(productToEdit));
+
+    toggleEditMode();
+  };
+
+  const deleteProduct = (productId) => {
+    dispatch(requestDeleteProduct(productId));
+  };
 
   return (
     <table>
@@ -24,7 +39,7 @@ export default function Table() {
       </thead>
       <tbody>
         {productsData.map((product) => (
-          <tr key={(product.name + product.code)}>
+          <tr key={(product.id)}>
             <td>{product.name}</td>
             <td>{product.code}</td>
             <td>{product.category.name}</td>
@@ -34,6 +49,8 @@ export default function Table() {
                 type="button"
                 data-testid="edit-btn"
                 className="edit-btn"
+                disabled={isEditMode}
+                onClick={() => editProductInfos(product.id)}
               >
                 <FaEdit />
               </button>
@@ -42,7 +59,7 @@ export default function Table() {
                 type="button"
                 data-testid="delete-btn"
                 className="delete-btn"
-
+                onClick={() => deleteProduct(product.id)}
               >
                 <FaTrashAlt />
               </button>

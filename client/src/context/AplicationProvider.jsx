@@ -6,6 +6,7 @@ function AplicationProvider({ children }) {
   const [productName, changeName] = useState('');
   const [productCode, changeCode] = useState('');
   const [productCategory, changeCategory] = useState('1');
+  const [isEditMode, changeEditMode] = useState(false);
 
   const changeProductName = ({ value }) => {
     changeName(value);
@@ -19,6 +20,10 @@ function AplicationProvider({ children }) {
     changeCategory(value);
   };
 
+  const toggleEditMode = () => {
+    changeEditMode((prevState) => !prevState);
+  };
+
   const stateValue = useMemo(() => ({
     productName,
     changeProductName,
@@ -26,6 +31,8 @@ function AplicationProvider({ children }) {
     changeProductCode,
     productCategory,
     changeProductCategory,
+    isEditMode,
+    toggleEditMode,
   }), [
     productName,
     changeProductName,
@@ -33,6 +40,8 @@ function AplicationProvider({ children }) {
     changeProductCode,
     productCategory,
     changeProductCategory,
+    isEditMode,
+    toggleEditMode,
   ]);
 
   return (

@@ -30,7 +30,7 @@ export default function AddProductForm() {
     dispatch(createNewProduct({ name, code, categoryId }));
   };
 
-  const validateInputField = () => {
+  const validateFields = () => {
     const errorCases = [
       productName.length === 0,
       productName.trim().length === 0,
@@ -44,7 +44,7 @@ export default function AddProductForm() {
   };
 
   useEffect(() => {
-    validateInputField();
+    validateFields();
   }, [productCode, productName]);
 
   return (
