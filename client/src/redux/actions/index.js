@@ -1,3 +1,4 @@
+import createProduct from '../../services/createProduct';
 import getCategories from '../../services/getCategories';
 import getProducts from '../../services/getProducts';
 
@@ -24,4 +25,11 @@ export const requestCategoriesFromApi = () => async (dispatch) => {
   const categories = await getCategories();
 
   dispatch(requestCategories(categories));
+};
+
+export const createNewProduct = ({ name, code, categoryId }) => async (dispatch) => {
+  const intCategoryId = parseInt(categoryId, 10);
+  await createProduct({ name, code, categoryId: intCategoryId });
+
+  dispatch(requestProductsFromApi());
 };
