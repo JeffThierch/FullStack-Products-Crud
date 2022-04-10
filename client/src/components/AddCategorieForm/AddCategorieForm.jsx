@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { requestCreateCategorie } from '../../redux/actions';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
+import styles from './AddCategorieForm.module.css';
 
 export default function AddCategorieForm() {
   const dispatch = useDispatch();
@@ -34,19 +35,22 @@ export default function AddCategorieForm() {
   }, [categorieInputName]);
 
   return (
-    <form>
-      <Input
-        name="input-categorie-name"
-        label="Categorie Name"
-        type="text"
-        value={categorieInputName}
-        onChangeCb={changeCategoryName}
-      />
-      <Button
-        text="Create Categorie"
-        isDisabled={isButtonDisabled}
-        onClickCb={() => createCategory(categorieInputName)}
-      />
+    <form className={`${styles.formContainer}`}>
+      <section className={`${styles.formInputsContainer}`}>
+        <Input
+          name="input-categorie-name"
+          label="Categorie Name"
+          type="text"
+          value={categorieInputName}
+          onChangeCb={changeCategoryName}
+        />
+        <Button
+          className={`${styles.button}`}
+          text="Create Categorie"
+          isDisabled={isButtonDisabled}
+          onClickCb={() => createCategory(categorieInputName)}
+        />
+      </section>
     </form>
   );
 }
