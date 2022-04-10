@@ -67,55 +67,59 @@ export default function EditProductForm() {
 
   return (
     <form className={`${style.formContainer}`}>
-      <Input
-        name="product-name-input"
-        type="text"
-        label="Product Name"
-        value={productName}
-        onChangeCb={changeProductName}
-      />
+      <section className={`${style.formInputContainer}`}>
+        <Input
+          name="product-name-input"
+          type="text"
+          label="Product Name"
+          value={productName}
+          onChangeCb={changeProductName}
+        />
 
-      <Input
-        name="product-code-input"
-        type="text"
-        label="Product Code"
-        value={productCode}
-        onChangeCb={changeProductCode}
-      />
+        <Input
+          name="product-code-input"
+          type="text"
+          label="Product Code"
+          value={productCode}
+          onChangeCb={changeProductCode}
+        />
 
-      <Select
-        name="category-select"
-        label="Category"
-        options={categories}
-        onChangeCb={changeProductCategory}
-        defaultValue={productCategory}
-      />
+        <Select
+          name="category-select"
+          label="Category"
+          options={categories}
+          onChangeCb={changeProductCategory}
+          defaultValue={productCategory}
+        />
 
-      <Select
-        name="status-select"
-        label="Is Active"
-        options={[{ id: 0, name: 'True' }, { id: 1, name: 'False' }]}
-        onChangeCb={changeProductStatus}
-        defaultValue={isActive}
-      />
+        <Select
+          name="status-select"
+          label="Is Active"
+          options={[{ id: 0, name: 'True' }, { id: 1, name: 'False' }]}
+          onChangeCb={changeProductStatus}
+          defaultValue={isActive}
+        />
 
-      <Button
-        text="Finish Edit"
-        onClickCb={() => editProduct(
-          {
-            id: productToEdit.id,
-            name: productName.trim(),
-            code: productCode.trim(),
-            categoryId: productCategory,
-            status: isActive === 0,
-          },
-        )}
-        isDisabled={isButtonDisabled}
-      />
-      <Button
-        text="Cancel Edit"
-        onClickCb={toggleEditMode}
-      />
+        <Button
+          text="Finish Edit"
+          className={`${style.finishEditBtn}`}
+          onClickCb={() => editProduct(
+            {
+              id: productToEdit.id,
+              name: productName.trim(),
+              code: productCode.trim(),
+              categoryId: productCategory,
+              status: isActive === 0,
+            },
+          )}
+          isDisabled={isButtonDisabled}
+        />
+        <Button
+          className={`${style.cancelEditBtn}`}
+          text="Cancel Edit"
+          onClickCb={toggleEditMode}
+        />
+      </section>
     </form>
   );
 }
