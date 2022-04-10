@@ -1,0 +1,64 @@
+.tableContainer {
+  border-collapse: separate;
+  border-spacing: 0 0.8rem;
+  width: 100vw;
+}
+
+.tableTheadContainer {
+  background-color: rgb(43, 39, 39);
+  color: white;
+  font-size: 0.8em;
+  font-weight: 600;
+  margin: 0;
+}
+
+.tableTheadContainer th {
+  padding: 0.7rem;
+}
+
+.tableTbodyContainer {
+  font-size: 0.7em;
+  text-align: center;
+}
+
+.tableTbodyContainer tr {
+  border-radius: 4px;
+  box-shadow: 1px 1px 4px rgb(42, 43, 56);
+}
+
+.tableTbodyContainer td {
+  padding: 0.5rem 0;
+}
+
+.editBtn {
+  background-color: rgb(241, 179, 9);
+  padding: 0.5rem 0.7rem;
+  border: 1px solid rgba(223, 218, 218, 0.863);
+  border-radius: 3px;
+  margin-right: 0.3rem;
+  transition: all 0.3s ease;
+  vertical-align: middle;
+}
+
+.editBtn:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.deleteBtn {
+  background-color: rgb(241, 9, 9);
+  padding: 0.5rem 0.7rem;
+  border: 1px solid rgba(223, 218, 218, 0.863);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  vertical-align: middle;
+}
+
+.deleteBtn:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.deleteBtn svg {
+  color: rgba(255, 255, 255, 0.911);
+}
