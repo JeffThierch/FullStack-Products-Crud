@@ -45,6 +45,10 @@
   opacity: 0.8;
 }
 
+.editBtn:disabled {
+  cursor: not-allowed;
+}
+
 .deleteBtn {
   background-color: rgb(241, 9, 9);
   padding: 0.5rem 0.7rem;
