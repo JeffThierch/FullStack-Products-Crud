@@ -6,6 +6,7 @@ import { requestEditProduct } from '../../redux/actions';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import Select from '../Select/Select';
+import style from './EditProductForm.module.css';
 
 export default function EditProductForm() {
   const [isButtonDisabled, changeButtonStatus] = useState(true);
@@ -65,7 +66,7 @@ export default function EditProductForm() {
   };
 
   return (
-    <form>
+    <form className={`${style.formContainer}`}>
       <Input
         name="product-name-input"
         type="text"

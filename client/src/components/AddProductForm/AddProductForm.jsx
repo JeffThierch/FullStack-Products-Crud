@@ -6,6 +6,7 @@ import { createNewProduct, requestCategoriesFromApi } from '../../redux/actions'
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import Select from '../Select/Select';
+import style from './AddProductForm.module.css';
 
 export default function AddProductForm() {
   const history = useHistory();
@@ -55,26 +56,28 @@ export default function AddProductForm() {
   };
 
   return (
-    <form>
-      <Input
-        name="product-name-input"
-        type="text"
-        label="Product Name"
-        value={productName}
-        onChangeCb={changeProductName}
-      />
+    <form className={`${style.formContainer}`}>
+      <section className={`${style.formInputContainer}`}>
+        <Input
+          name="product-name-input"
+          type="text"
+          label="Product Name"
+          value={productName}
+          onChangeCb={changeProductName}
+        />
 
-      <Input
-        name="product-code-input"
-        type="text"
-        label="Product Code"
-        value={productCode}
-        onChangeCb={changeProductCode}
-      />
+        <Input
+          name="product-code-input"
+          type="text"
+          label="Product Code"
+          value={productCode}
+          onChangeCb={changeProductCode}
+        />
 
-      {
+        {
        !categories.length ? (
          <Button
+           className={`${style.addClassBtn}`}
            name="add_categorie"
            text="Create Categorie"
            onClickCb={redirectToCreateCategoriePage}
@@ -90,14 +93,15 @@ export default function AddProductForm() {
 
       }
 
-      <Button
-        text="Create Product"
-        onClickCb={() => createProduct(
-          { name: productName.trim(), code: productCode.trim(), categoryId: productCategory },
-        )}
-        isDisabled={isButtonDisabled}
-
-      />
+        <Button
+          text="Create Product"
+          className={`${style.createProductBtn}`}
+          onClickCb={() => createProduct(
+            { name: productName.trim(), code: productCode.trim(), categoryId: productCategory },
+          )}
+          isDisabled={isButtonDisabled}
+        />
+      </section>
     </form>
   );
 }
