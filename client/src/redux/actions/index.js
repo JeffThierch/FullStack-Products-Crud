@@ -1,3 +1,4 @@
+import createCategory from '../../services/createCategorie';
 import createProduct from '../../services/createProduct';
 import deleteProduct from '../../services/deleteProduct';
 import getCategories from '../../services/getCategories';
@@ -61,4 +62,9 @@ export const requestEditProduct = (
 export const requestDeleteProduct = (productId) => async (dispatch) => {
   await deleteProduct(productId);
   dispatch(requestProductsFromApi());
+};
+
+export const requestCreateCategorie = (categorieName) => async (dispatch) => {
+  await createCategory(categorieName);
+  dispatch(requestCategoriesFromApi());
 };

@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import AplicationContext from '../../context/AplicationContext';
 import { requestEditProduct } from '../../redux/actions';
 import Button from '../Button/Button';
@@ -39,10 +40,10 @@ export default function EditProductForm() {
 
   const validateFields = () => {
     const errorCases = [
-      productName.length === 0,
-      productName.trim().length === 0,
-      productCode.length === 0,
-      productCode.trim().length === 0,
+      !productName.length,
+      !productName.trim().length,
+      !productCode.length,
+      !productCode.trim().length,
     ];
 
     const haveSomeError = errorCases.some((error) => error === true);

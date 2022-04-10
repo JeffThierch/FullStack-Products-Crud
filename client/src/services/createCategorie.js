@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const getCategories = async () => {
+const createCategory = async (categoryName) => {
   const RETURNED_OBJ = {
     data: [],
     error: '',
@@ -8,11 +8,13 @@ const getCategories = async () => {
 
   try {
     const PORT = process.env.REACT_APP_SERVER_PORT;
-    const categories = await axios.get(`http://localhost:${PORT}/categories?includeProducts=true`);
+    const newCategorie = await axios.post(`http://localhost:${PORT}/categories`, {
+      name: categoryName,
+    });
 
     return {
       ...RETURNED_OBJ,
-      data: categories.data,
+      data: newCategorie.data,
     };
   } catch (err) {
     return {
@@ -22,4 +24,4 @@ const getCategories = async () => {
   }
 };
 
-export default getCategories;
+export default createCategory;

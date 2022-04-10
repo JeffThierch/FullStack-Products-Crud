@@ -4,6 +4,7 @@ import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import productsTableHead from '../../helpers/data';
 import { editProduct, requestDeleteProduct, requestProductsFromApi } from '../../redux/actions';
 import AplicationContext from '../../context/AplicationContext';
+import ProductNotFound from '../ProductNotFound/ProductNotFound';
 
 export default function Table() {
   const dispatch = useDispatch();
@@ -29,44 +30,46 @@ export default function Table() {
   };
 
   return (
-    <table>
-      <thead>
-        <tr>
-          {productsTableHead.map((head) => (
-            <th key={head}>{head}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {productsData.map((product) => (
-          <tr key={(product.id)}>
-            <td>{product.name}</td>
-            <td>{product.code}</td>
-            <td>{product.category.name}</td>
-            <td>{`${product.is_active}`}</td>
-            <td>
-              <button
-                type="button"
-                data-testid="edit-btn"
-                className="edit-btn"
-                disabled={isEditMode}
-                onClick={() => editProductInfos(product.id)}
-              >
-                <FaEdit />
-              </button>
-
-              <button
-                type="button"
-                data-testid="delete-btn"
-                className="delete-btn"
-                onClick={() => deleteProduct(product.id)}
-              >
-                <FaTrashAlt />
-              </button>
-            </td>
+    !productsData.length ? <ProductNotFound /> : (
+      <table>
+        <thead>
+          <tr>
+            {productsTableHead.map((head) => (
+              <th key={head}>{head}</th>
+            ))}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {productsData.map((product) => (
+            <tr key={(product.id)}>
+              <td>{product.name}</td>
+              <td>{product.code}</td>
+              <td>{product.category.name}</td>
+              <td>{`${product.is_active}`}</td>
+              <td>
+                <button
+                  type="button"
+                  data-testid="edit-btn"
+                  className="edit-btn"
+                  disabled={isEditMode}
+                  onClick={() => editProductInfos(product.id)}
+                >
+                  <FaEdit />
+                </button>
+
+                <button
+                  type="button"
+                  data-testid="delete-btn"
+                  className="delete-btn"
+                  onClick={() => deleteProduct(product.id)}
+                >
+                  <FaTrashAlt />
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    )
   );
 }

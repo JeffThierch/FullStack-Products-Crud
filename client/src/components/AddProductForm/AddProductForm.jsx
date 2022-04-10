@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import AplicationContext from '../../context/AplicationContext';
 import { createNewProduct, requestCategoriesFromApi } from '../../redux/actions';
 import Button from '../Button/Button';
@@ -7,6 +8,7 @@ import Input from '../Input/Input';
 import Select from '../Select/Select';
 
 export default function AddProductForm() {
+  const history = useHistory();
   const [isButtonDisabled, changeButtonStatus] = useState(true);
 
   const {
@@ -36,6 +38,7 @@ export default function AddProductForm() {
       productName.trim().length === 0,
       productCode.length === 0,
       productCode.trim().length === 0,
+      !categories.length,
     ];
 
     const haveSomeError = errorCases.some((error) => error === true);
@@ -46,6 +49,10 @@ export default function AddProductForm() {
   useEffect(() => {
     validateFields();
   }, [productCode, productName]);
+
+  const redirectToCreateCategoriePage = () => {
+    history.push('/categories');
+  };
 
   return (
     <form>
@@ -65,12 +72,23 @@ export default function AddProductForm() {
         onChangeCb={changeProductCode}
       />
 
-      <Select
-        name="category-select"
-        label="Category"
-        options={categories}
-        onChangeCb={changeProductCategory}
-      />
+      {
+       !categories.length ? (
+         <Button
+           name="add_categorie"
+           text="Create Categorie"
+           onClickCb={redirectToCreateCategoriePage}
+         />
+       ) : (
+         <Select
+           name="category-select"
+           label="Category"
+           options={categories}
+           onChangeCb={changeProductCategory}
+         />
+       )
+
+      }
 
       <Button
         text="Create Product"

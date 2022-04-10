@@ -12,13 +12,13 @@ const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 
 root.render(
-  <StrictMode>
-    <BrowserRouter>
+  <BrowserRouter>
+    <StrictMode>
       <Provider store={store}>
         <AplicationProvider>
           <App />
         </AplicationProvider>
       </Provider>
-    </BrowserRouter>
-  </StrictMode>,
+    </StrictMode>
+  </BrowserRouter>,
 );
