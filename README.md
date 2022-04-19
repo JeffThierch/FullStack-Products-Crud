@@ -18,7 +18,7 @@ For this project the following technologies were used:
 
 1. Clone the repository
   ~~~bash
-  git clone git@github.com:JeffThierch/Products-CRUD.git
+  git clone git@github.com:JeffThierch/FullStack-Products-Crud.git
   ~~~
 
 2. In the root of the project change the .env_example file to .env
