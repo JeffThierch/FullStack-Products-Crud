@@ -38,9 +38,9 @@ For this project the following technologies were used:
 
 8. (**Important**) - If running using Docker use:
 
-  ˋˋˋ
+  >>>
     DATABASE_URL="postgresql://POSTGRES_USER:POSTGRES_PASSWORD@postgres:5432/POSTGRES_DATABASE?schema=public"
-  ˋˋˋ
+  >>>
 
 9. Change the fields in the .env file to the **same fields used in the database configuration** performed in the **second step**
 
