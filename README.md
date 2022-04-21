@@ -14,7 +14,36 @@ For this project the following technologies were used:
 - [PostgreSQL](https://www.postgresql.org/)
 - [Docker](https://www.docker.com/)
 
-## How to Use:
+<br>
+
+# Home
+<img src="./public/home.png">
+
+<br>
+
+# Categories Page
+<img src="./public/categories.png">
+
+<br>
+
+# Categories Page After Add a Category
+<img src="./public/categories01.png">
+
+<br>
+
+# Home Page After Add a Product
+<img src="./public/home01.png">
+
+<br>
+
+# Edit Mode
+<img src="./public/edit.png">
+
+<br>
+
+
+
+# How to Use:
 
 1. Clone the repository
   ~~~bash
